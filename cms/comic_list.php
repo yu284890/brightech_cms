@@ -19,6 +19,28 @@ if (isset($_SESSION['user_id'])) {//ログインしているとき
     $link = '<a href="login.php">ログイン</a>';
 }
 
+$mysqli = new mysqli('localhost', 'brightech', 'brightech', 'cms');
+
+  $sql = "SELECT * FROM mst_titles;";
+  $result = $mysqli->query($sql);
+
+
+  echo "<table>\n";
+  echo "<tr><th>ID</th><th>title</th><th>writer</th><th>説明</th></tr>\n";
+  while($row = $result->fetch_assoc() ){
+      // 何行も文字列書くときはこのようなヒアドキュメントが便利
+      $html = <<<TEXT
+  <tr>
+    <td>{$row['id']}</td>
+    <td>{$row['title']}</td>
+    <td>{$row['writer']}</td>
+    <td>{$row['example']}</td>
+    <td><a href="edit_comic.php?id={$row['id']}">編集</a></td>
+  </tr>
+  TEXT;
+      echo $html;
+  }
+  echo "</table>";
 
 
 

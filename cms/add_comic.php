@@ -26,6 +26,7 @@
 
 // exit;
 //escape function
+session_start();
 function h(string $str): string
 {
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
@@ -59,8 +60,7 @@ $example = h($_POST["example"]);
 $stmt = $pdo->prepare("INSERT INTO mst_titles (title,writer,example) VALUES (:title, :writer,:example)");
 //$stmt = $pdo->prepare("SELECT * FROM mst_titles WHERE id = :id");
 
-// (4) 登録するデータをセット
-$id = 1;
+
 $stmt->bindParam( ':title', $title, PDO::PARAM_STR_CHAR);
 $stmt->bindParam( ':writer', $writer, PDO::PARAM_STR_CHAR);
 $stmt->bindParam( ':example', $example, PDO::PARAM_STR_CHAR);
@@ -69,13 +69,9 @@ $stmt->bindParam( ':example', $example, PDO::PARAM_STR_CHAR);
 $res = $stmt->execute();
 
 // (6) 該当するデータを取得
-if( $res ) {
-	var_dump($res);
-}
 //$stmt->execute(array(':title' => $title, ':writer' => $writer, ':example'->$example));
 // $dbh = null;
-// header('Location: ./comic_list.php');
-
+header('Location: ./comic_list.php');
 
 
 
