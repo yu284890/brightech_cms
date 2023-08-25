@@ -21,7 +21,7 @@ final class AddMstChaptersTable extends AbstractMigration
         $table = $this->table('mst_chapters');
         $table->addColumn('comic_id', 'integer',['null' => false])
               ->addColumn('chapter_name', 'string',['null' => false])
-              ->addColumn('date', 'datetime')
+              ->addColumn('date', 'date')
               ->create();
     }
     public function down()

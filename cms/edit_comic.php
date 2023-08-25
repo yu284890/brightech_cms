@@ -47,7 +47,7 @@ if (isset($_POST["title"])) {
 
     // $stm = $pdo->prepare("UPDATE mst_titles SET title='testaaaa',writer='testwraaaiter',example='testexample' WHERE id=1");
 
-    // $stm->bindParam(':title', $new_title, PDO::PARAM_STR_CHAR);
+    $stm->bindParam(':title', $new_title, PDO::PARAM_STR_CHAR);
     $stm->bindParam(':writer', $new_writer, PDO::PARAM_STR_CHAR);
     $stm->bindParam(':example', $new_example, PDO::PARAM_STR_CHAR);
     $stm->bindParam(':id', $id, PDO::PARAM_INT);
