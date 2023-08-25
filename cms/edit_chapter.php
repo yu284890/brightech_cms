@@ -56,9 +56,27 @@ if (isset($_POST["chapter_name"])) {
         $res = $stm->execute();
         header('Location: ./chapter_list.php?id='.$comic_id.'');
     }else{
-        header('Location: ./edit_chapter.php?id='.$chapter_id.'');
+        $alert_message = "これはalertです。";
+        // ②$alertにjavascriptのalert関数と変数を組み合わせて代入する
+        $alert = "<script type='text/javascript'>alert('".$alert_message."');</script>";
+        
+        // ③echoで②を表示する
+        echo $alert;
+        $stm->bindParam(':comic_id', $comic_id);
+        $stm->bindParam(':new_chapter_name', $new_chapter_name, PDO::PARAM_STR_CHAR);
+        $stm->bindParam(':new_date', $new_date, PDO::PARAM_STR_CHAR);
+        $stm->bindParam(':chapter_id', $chapter_id,PDO::PARAM_INT);
+      
+    
+        // (5) SQL実行
+        $res = $stm->execute();
 
-    }
+       
+        
+
+                
+
+            }
 
 
 }

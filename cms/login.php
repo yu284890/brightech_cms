@@ -51,5 +51,6 @@
 		  パスワード: <input type="password" name="password" /><br/>
 		  <input type="submit" />
 		</form>
+        <a href="register.php">登録画面へ</a>
 	</body>
 </html>

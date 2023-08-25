@@ -6,6 +6,7 @@
         パスワード:<br>
         <input type="text" name="password" value=""><br>
         <input type="submit" value="登録">
+        <a href="login.php">ログイン画面へ</a>
     </form>
 </section>
 
@@ -36,5 +37,8 @@ $password_hash = hash("sha256", $pass);
 $stmt = $dbh->prepare("INSERT INTO adm_admin_users (mail, password) VALUES (:mail, :pass)");
 $stmt->execute(array(':mail' => $mail,':pass' => $password_hash));
 $dbh = null;
+
+
+
 
 ?>
